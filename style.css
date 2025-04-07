@@ -51,3 +51,8 @@ hr {
 .about-title, .about-text, .footer-text {
     color:#7b9acc;
 }
+
+.video {
+    text-align: center;
+    padding: 20px;
+}
