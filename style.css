@@ -17,17 +17,19 @@ footer {
     padding: 20px;
 }
 
-h1 {
-    color: #FCF6F5;
-}
-
 body {
     background-color: #FCF6F5;
 }
 
 hr {
     color: #7b9acc;
-    border-color: #7b9acc
+    border-color: #7b9acc;
+}
+
+img {
+    width: 600px;
+    height: 450px;
+    object-fit: cover;
 }
 
 .link {
@@ -44,6 +46,10 @@ hr {
     color:#FCF6F5;
 }
 
+.title {
+    color: #FCF6F5;
+}
+
 .text {
     padding: 20px;
 }
@@ -54,5 +60,14 @@ hr {
 
 .video {
     text-align: center;
+    padding: 20px;
+}
+
+.images {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
     padding: 20px;
 }
