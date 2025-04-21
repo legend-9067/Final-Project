@@ -26,7 +26,7 @@ hr {
     border-color: #7b9acc;
 }
 
-img {
+.pic {
     width: 600px;
     height: 450px;
     object-fit: cover;
@@ -70,4 +70,45 @@ img {
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
+}
+
+#dragon {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background-image: url("phoenix.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+#game {
+    position: relative;
+    width: 98vw;
+    height: 35vw;
+    margin: auto;
+    background-color:#7b9acc;
+
+}
+
+.fireball {
+    position: absolute;
+    width: 60px;
+    height: 100px;
+    background-image: url("fireball.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+.human {
+  position: absolute;
+  width: 120px;
+  height: 180px;
+  background-image: url("human.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  bottom: 400px; /* 👈 increase this to push humans higher */
 }
