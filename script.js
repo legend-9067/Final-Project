@@ -1,27 +1,67 @@
 const game = document.getElementById("game");
 const dragon = document.getElementById("dragon");
+let canShoot = true;
+let score = 0;
+let timeLeft = 60;
+let gameOver = false;
+
+const scoreElement = document.getElementById("score");
+const timerElement = document.getElementById("timer");
+
+const reloadStatus = document.getElementById("reloadStatus");
+
 
 let dragonX = window.innerWidth / 2;
-const dragonSpeed = 10;
+const dragonSpeed = 5; // a bit smoother
+const keys = {}; // track pressed keys
 
+// Listen for key presses
 document.addEventListener("keydown", e => {
-  if (e.key === "a" || e.key === "A") {
-    dragonX -= dragonSpeed;
-  } else if (e.key === "d" || e.key === "D") {
-    dragonX += dragonSpeed;
-  } else if (e.key === " ") {
+  keys[e.key.toLowerCase()] = true;
+
+  if (e.key === " " && canShoot && !gameOver) {
     shootFireball();
+    canShoot = false;
+    reloadStatus.innerText = "Reloading..."; // 🛑 show reloading
+
+    setTimeout(() => {
+      canShoot = true;
+      reloadStatus.innerText = "Ready!"; // ✅ ready again
+    }, 1000);
+  }
+});
+
+// Listen for key releases
+document.addEventListener("keyup", e => {
+  keys[e.key.toLowerCase()] = false;
+});
+
+// Move dragon based on pressed keys
+function moveDragon() {
+  if (keys["a"]) {
+    dragonX -= dragonSpeed;
+  }
+  if (keys["d"]) {
+    dragonX += dragonSpeed;
   }
 
-  // Clamp to screen
-  dragonX = Math.max(0, Math.min(dragonX, window.innerWidth - dragon.offsetWidth));
+  // Clamp dragon within screen
+  dragonX = Math.max(0, Math.min(dragonX, window.innerWidth));
   dragon.style.left = `${dragonX}px`;
-});
+
+  requestAnimationFrame(moveDragon); // keeps moving smoothly
+}
+
+// Start moving!
+moveDragon();
 
 function shootFireball() {
     const fireball = document.createElement("div");
     fireball.classList.add("fireball");
-  
+    const fireSound = new Audio("./fire-SoundEffect.mp3")
+
+    fireSound.play();
+
     // Get dragon's position inside the game container
     const rect = dragon.getBoundingClientRect();
     const dragonX = rect.left + window.scrollX - 35;
@@ -45,6 +85,8 @@ function shootFireball() {
         if (isColliding(fireball, human)) {
           game.removeChild(human);
           game.removeChild(fireball);
+          score += 1;
+          scoreElement.innerText = `Score: ${score}`;
           clearInterval(interval);
         }
       });
@@ -75,3 +117,34 @@ function spawnHuman() {
 }
 
 setInterval(spawnHuman, 2000);
+
+function startTimer() {
+  const countdown = setInterval(() => {
+    if (gameOver) {
+      clearInterval(countdown);
+      return;
+    }
+
+    timeLeft--;
+    timerElement.innerText = `Time: ${timeLeft}`;
+
+    if (timeLeft <= 0) {
+      endGame();
+    }
+  }, 1000); // Every 1 second
+}
+
+function endGame() {
+  gameOver = true;
+
+  // Disable shooting
+  canShoot = false;
+
+  // Optional: Stop humans from spawning (if you want)
+  // clearInterval(humanSpawnInterval);
+
+  // Show end game message
+  alert(`Game Over! Final Score: ${score}`);
+}
+
+startTimer();

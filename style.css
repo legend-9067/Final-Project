@@ -4,6 +4,125 @@
     padding: 0;
 }
 
+@media (max-width: 800px) {
+    .pic {
+        width: 600px;
+        height: 450px;
+        object-fit: cover;
+    }
+    
+    .link {
+        color: #FCF6F5;
+        font-size: 20px;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+    
+    .links {
+        width: 600px;
+        display: flex;
+        justify-content: space-around;
+        color:#FCF6F5;
+    }
+    
+    .title {
+        color: #FCF6F5;
+    }
+    
+    .text {
+        padding: 20px;
+    }
+    
+    .about-title, .about-text, .footer-text {
+        color:#7b9acc;
+    }
+    
+    .video {
+        text-align: center;
+        padding: 20px;
+        height: 100%;
+    }
+    
+    .images {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+    }
+    
+    #dragon {
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        background-image: url("phoenix.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    
+    #game {
+        position: relative;
+        width: 98vw;
+        height: 35vw;
+        margin: auto;
+        background-color:#7b9acc;
+    
+    }
+    
+    #score, #timer {
+        position: absolute;
+        top: 10px;
+        font-size: 24px;
+        color: white;
+        padding: 5px 10px;
+        background: rgba(0,0,0,0.5);
+        border-radius: 8px;
+      }
+      
+    #score {
+        left: 10px;
+    }
+    
+    #timer {
+        right: 10px;
+    }
+    
+    #reloadStatus {
+        position: absolute;
+        top: 50px; /* Below the score and timer */
+        left: 10px;
+        font-size: 20px;
+        color: yellow;
+        background: rgba(0,0,0,0.5);
+        padding: 5px 10px;
+        border-radius: 8px;
+      }
+    
+    .fireball {
+        position: absolute;
+        width: 40px;
+        height: 150px;
+        background-image: url("fireball.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      
+    .human {
+      position: absolute;
+      width: 120px;
+      height: 180px;
+      background-image: url("human.png");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      bottom: 400px; /* 👈 increase this to push humans higher */
+    }
+}
+
 header {
     display: flex;
     justify-content: space-between;
@@ -61,6 +180,7 @@ hr {
 .video {
     text-align: center;
     padding: 20px;
+
 }
 
 .images {
@@ -93,10 +213,39 @@ hr {
 
 }
 
+#score, #timer {
+    position: absolute;
+    top: 10px;
+    font-size: 24px;
+    color: white;
+    padding: 5px 10px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 8px;
+  }
+  
+#score {
+    left: 10px;
+}
+
+#timer {
+    right: 10px;
+}
+
+#reloadStatus {
+    position: absolute;
+    top: 50px; /* Below the score and timer */
+    left: 10px;
+    font-size: 20px;
+    color: yellow;
+    background: rgba(0,0,0,0.5);
+    padding: 5px 10px;
+    border-radius: 8px;
+  }
+
 .fireball {
     position: absolute;
-    width: 60px;
-    height: 100px;
+    width: 40px;
+    height: 150px;
     background-image: url("fireball.png");
     background-size: cover;
     background-repeat: no-repeat;
