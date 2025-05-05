@@ -67,7 +67,7 @@
     #game {
         position: relative;
         width: 98vw;
-        height: 35vw;
+        height: 75vh;
         margin: auto;
         background-color:#7b9acc;
     
@@ -207,7 +207,7 @@ hr {
 #game {
     position: relative;
     width: 98vw;
-    height: 35vw;
+    height: 75vh;
     margin: auto;
     background-color:#7b9acc;
 

@@ -46,7 +46,9 @@ function moveDragon() {
   }
 
   // Clamp dragon within screen
-  dragonX = Math.max(0, Math.min(dragonX, window.innerWidth));
+  const gameRect = game.getBoundingClientRect();
+  dragonX = Math.max(0, Math.min(dragonX, gameRect.width - 75));
+
   dragon.style.left = `${dragonX}px`;
 
   requestAnimationFrame(moveDragon); // keeps moving smoothly
@@ -141,7 +143,7 @@ function endGame() {
   canShoot = false;
 
   // Optional: Stop humans from spawning (if you want)
-  // clearInterval(humanSpawnInterval);
+  clearInterval(humanSpawnInterval);
 
   // Show end game message
   alert(`Game Over! Final Score: ${score}`);
